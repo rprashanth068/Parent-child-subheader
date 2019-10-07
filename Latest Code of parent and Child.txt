@@ -1,0 +1,132 @@
+import React from 'react';
+import './App.css';
+import ItemList from "./ItemList";
+function App() {
+  const data = [
+    {
+    title: "Commitments",
+    children: [
+      {
+       title: "HeadLine 1",
+       children: [
+      { 
+        title: "HeadeLine 2",
+         children: [
+          {
+        title: "HeadLine 3"
+          }]
+         }]   
+      },
+     {
+        title: "HeadLine 3",
+        children: [
+          { title: "SubHeadeLine 1",
+          children: [
+           {
+            title: "SubHeadLine 2"
+           }]
+          }]   
+       },
+       {
+        title: "Test",
+        children: [
+          { title: "SubHeadeLine 1",
+          children: [
+           {
+            title: "SubHeadLine 2"
+           }]
+          }]   
+       }]
+  },
+  
+  {
+    title: "Contacts",
+    children: [
+      {
+       title: "HeadLine 1",
+       children: [
+         { title: "HeadeLine 2",
+         children: [
+          {
+           title: "HeadLine 3"
+          }]
+         }]   
+      }]
+  },
+                                                                  
+  {
+    title: "Documents",
+    children: [
+      {
+       title: "HeadLine 1",
+       children: [
+         { title: "HeadeLine 2",
+         children: [
+          {
+           title: "HeadLine 3"
+          }]
+         }]   
+      }]
+  },
+  {
+    title: "Project",
+    children: [
+      {
+       title: "ProjectComments",
+       children: [
+         ]   
+      },
+      {
+        title: "ProjectCrossreferences",
+        children: [
+          { title: "HeadeLine 1",
+          children: [
+           {
+            title: "HeadLine 2"
+           }]
+          }]   
+       },
+       {
+        title: "ProjectSurveyCompany",
+        children: [
+          { title: "HeadeLine 1",
+          children: [
+           {
+            title: "HeadLine 2"
+           }]
+          }]   
+       }]
+  }];
+  return (
+    <div>{data.map((item,index) => <ItemList key={index} {...item}/>)}</div>
+
+
+
+	
+  );
+}
+
+export default App;
+
+
+
+
+ItemList.JS==================
+
+import React from 'react';
+
+class ItemList extends React.Component {
+    render() {
+        const {title, children} = this.props;
+        return(
+            <div>
+                <div>{title}</div>
+                <div style={{margin: '3px 10px'}}>
+                    {children && children.map((item, index) => <ItemList key={index} {...item}/>)}
+                </div>
+            </div>
+        )
+    }
+}
+
+export default ItemList;
